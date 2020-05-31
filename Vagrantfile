@@ -1,13 +1,16 @@
 # Debian 10 - Buster
 Vagrant.configure("2") do |config|
 
+  config.vm.box = "debian/buster64"
+
   # Change storage pool location from /var/lib/libvirt/images
   # to custom created storage pool located in home directory
   config.vm.provider :libvirt do |libvirt|
     libvirt.storage_pool_name = "kvm-volumes"
   end
 
-  config.vm.box = "debian/buster64"
+  # Graphana
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
   # cAdvisor
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   # Main Prometheus server

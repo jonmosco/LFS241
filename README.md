@@ -18,6 +18,11 @@ Vagrant to use Libvirt provider is to setup environment variable
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 ```
 
+Changing the Vagrantfile requires a reload:
+```
+vagrant reload
+```
+
 #### Provisioning with Ansible
 
 The first time you run vagrant up, Vagrant will execute the provisioner and
@@ -56,6 +61,12 @@ https://github.com/prometheus/client_python
 
 ```bash
 pip install prometheus_client
+```
+
+#### Grafana
+
+```
+docker run -d -p 3000:3000 --name grafana grafana/grafana:5.2.4
 ```
 
 ### Issues
