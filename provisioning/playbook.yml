@@ -10,6 +10,8 @@
     - name: Install dependent packages
       apt:
         pkg:
+        - python-pip
+        - python3-pip
         - tmux
         - vim
         - apt-transport-https
@@ -17,6 +19,7 @@
         - curl
         - gnupg-agent
         - software-properties-common
+        - psmisc
 
     - name: Apt key for docker repo
       apt_key:
@@ -47,3 +50,15 @@
         name: vagrant
         groups: docker
         append: yes
+
+    - name: Copy tmux.conf to home directory
+      copy:
+        src: ../config/tmux.conf
+        dest: /home/vagrant/.tmux.conf
+        owner: vagrant
+        group: vagrant
+        mode: '0644'
+
+    - name: Install Prometheus Python client
+      pip:
+        name: prometheus_client

@@ -9,16 +9,20 @@ Vagrant.configure("2") do |config|
     libvirt.storage_pool_name = "kvm-volumes"
   end
 
-  # Graphana
+  # Grafana
   config.vm.network "forwarded_port", guest: 3000, host: 3000
   # cAdvisor
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   # Main Prometheus server
   config.vm.network "forwarded_port", guest: 9090, host: 9090
+  # Prometheus Node Exported
+  config.vm.network "forwarded_port", guest: 9100, host: 9100
   # Demo service ports
   config.vm.network "forwarded_port", guest: 10000, host: 10000
   config.vm.network "forwarded_port", guest: 10001, host: 10001
   config.vm.network "forwarded_port", guest: 10002, host: 10002
+  # Instrumentation exercise example server
+  config.vm.network "forwarded_port", guest: 10002, host: 12345
 
   # Run ansible from the host
   config.vm.provision "ansible" do |ansible|

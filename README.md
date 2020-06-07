@@ -6,7 +6,7 @@ NOTE: This repo does not have any of the official files from the training,
 
 ## Lab Environment
 
-* Vagrantfile for Ubuntu 18.04LTS
+* Vagrantfile for Ubuntu 18.04 LTS
 * Vagrantfile for Debian 10 - Buster
 
 ### Vagrant
